@@ -4,7 +4,6 @@
  * @author Rohn(liuzhao08@baidu.com)
  * @date   17/1/25
  */
-set_time_limit(600);
 define('DATA_DIR', '../data/');
 //取文件全路径
 $dataFileName = DATA_DIR . $_GET['f'];
@@ -18,7 +17,7 @@ if($_GET['timestamp'] == 0){
         if($modifiedAt > $timestamp){
             $data    = file_get_contents($dataFileName);
             $arrData = array(
-                'content' => $data,
+                'content' => str_replace(chr(32),'&nbsp;',addslashes(htmlspecialchars($data))),
                 'timestamp' => $modifiedAt,
             );
             echo json_encode($arrData);
