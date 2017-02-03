@@ -25,9 +25,10 @@
     </style>
     <script type="text/javascript" src="client/jquery.min.js"></script>
     <?php
-    $file = isset($_GET['file'])?$_GET['file']:'data.txt';
+    $file   = isset($_GET['file'])?$_GET['file']:'data.txt';
+    $action = isset($_GET['action'])?$_GET['action']:'developing';
     echo '<script type="application/javascript">
-        var action = "developing";
+        var action = "' . $action . '";
         var file = "' . $file . '";
     </script>';
     ?>

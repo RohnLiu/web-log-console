@@ -9,7 +9,9 @@ define('DATA_DIR', '../data/');
 $dataFileName = DATA_DIR . $_GET['f'];
 //初次刷新页面会清空原文件内容
 if($_GET['timestamp'] == 0){
-    @unlink($dataFileName);
+    if($_GET['action'] != 'not_clean'){
+        @unlink($dataFileName);
+    }
 }else{
     $timestamp = $_GET['timestamp'];
     if(file_exists($dataFileName)){
